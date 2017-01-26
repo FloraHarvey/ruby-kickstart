@@ -7,5 +7,12 @@
 
 class String
   def every_other_char
+    indices = (0..self.length - 1).to_a
+    str = ""
+    even_indices = indices.select {|n| n.even?}
+    even_indices.each do |n|
+      str += self.slice(n)
+    end
+    str
   end
 end
