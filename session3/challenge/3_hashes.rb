@@ -6,3 +6,11 @@
 #
 # Example:
 # word_count "The dog and the cat" # => {"the" => 2, "dog" => 1, "and" => 1, "cat" => 1}
+
+
+def word_count (string)
+  count = Hash.new {|h, k| h[k] = 0}
+  words = string.downcase.split(" ")
+  words.each { |word| count[word] += 1 }
+  count
+end
