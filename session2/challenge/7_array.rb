@@ -14,12 +14,16 @@
 # extract words at even indices
 
 def alternate_words(string)
-  no_punctuation = string.gsub(/[^a-zA-Z0-9\s']/,"")
-  words = no_punctuation.split(" ")
+  to_ignore = "! @ $ # % ^ & * ( ) - = _ + [ ] : ; , . / < > ? \ |".split(" ")
+  to_ignore.each { |char|
+    string = string.gsub(char, " ")}
+  words = string.split(" ")
   result = []
-  indices = (0..(words.length - 1)).to_a
+  indices = (0..(words.length - 1))
   even_indices = indices.select {|n| n.even?}
-  p even_indices
   even_indices.each {|n| result << words[n]}
-  p result
+  result
 end
+
+  # regex attempt didn't work - can't remove apostrophes
+  # no_punctuation = string.gsub(/[^a-zA-Z0-9\s']/,"")
