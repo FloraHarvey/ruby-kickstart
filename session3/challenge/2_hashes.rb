@@ -8,3 +8,12 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase (num)
+  hash = Hash.new
+  range = 1..num
+  odds = (1..num).select {|n| n.odd?}
+  odds.each {|n|
+    hash[n] = (2..n).select {|n|
+      n.even?} }
+  hash
+end
