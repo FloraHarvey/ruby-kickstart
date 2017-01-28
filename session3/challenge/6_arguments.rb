@@ -17,3 +17,20 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+
+#If first parameter is true, following pairs will return true if different, false if same
+# If false, opposite
+# nil is equivalent to false
+# 0 is equiv to true
+# iterate through array in 2s (each slice)
+
+
+def match_maker (param1, *pairs)
+  result = []
+  if param1
+    pairs.each_slice(2) { |a,b| result << a != b}
+  else
+    pairs.each_slice(2) { |a,b| result << a == b}
+  end
+  result
+end
