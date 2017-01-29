@@ -30,5 +30,11 @@
 # end
 
 
-def array_init
+def array_init (num = 5, &block)
+
+      block ||= Proc.new {|i| (i * 100).to_s}
+      return Array.new(num, &block)
+
 end
+
+# why do we not use initialize here? It worked with initialize...
