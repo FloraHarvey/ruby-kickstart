@@ -29,4 +29,14 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  result = Hash.new
+  a.each {|n| result[n] = [true, nil]}
+  b.each {|n|
+    if result[n] == [true, nil]
+      result[n] = [true, true]
+    else result[n] = [nil, true]
+    end}
+  both = result.select {|key, value|
+    value == [true, true]} .map{|key, value| key}
+  return result, both.sort
 end
