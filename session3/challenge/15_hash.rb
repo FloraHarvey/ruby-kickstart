@@ -38,3 +38,17 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+
+# don't understand this part of the method - copied solution to find list_size
+def list_size(list)
+  return 0 unless list
+  1 + list_size(list[:next])
+end
+
+
+def middle(list, halfway=list_size(list)/2)
+# if list has one element, halfway point is 0
+  return list[:data] if halfway == 0
+# if list has more than 1 element, use recursive method:
+  middle list[:next], (halfway - 1)
+end
